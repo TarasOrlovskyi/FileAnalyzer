@@ -9,7 +9,6 @@ public class FileAnalyzer {
     public static void main(String[] args) {
         FileAnalyzer fileAnalyzer = new FileAnalyzer();
         try {
-            //why when i use file with extending .doc i received abracadabra?
             System.out.println("File -> '" + args[0] + "';\n Word -> '" + args[1] + "'");
             File pathToFile = new File(args[0]);
 
