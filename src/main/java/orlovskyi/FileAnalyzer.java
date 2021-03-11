@@ -1,9 +1,6 @@
 package orlovskyi;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 public class FileAnalyzer {
     public static void main(String[] args) {
@@ -11,6 +8,9 @@ public class FileAnalyzer {
         try {
             System.out.println("File -> '" + args[0] + "';\n Word -> '" + args[1] + "'");
             File pathToFile = new File(args[0]);
+            if (!pathToFile.exists()){
+                throw new FileNotFoundException("File doesn't exist!");
+            }
 
             int count = fileAnalyzer.getAmountOccurrences(pathToFile, args[1]);
             System.out.println(count);
@@ -18,6 +18,8 @@ public class FileAnalyzer {
             System.out.println(fileAnalyzer.getSentences(pathToFile, args[1]));
         } catch (ArrayIndexOutOfBoundsException e){
             throw new ArrayIndexOutOfBoundsException("There is no word for search!");
+        } catch (FileNotFoundException fnfe){
+            fnfe.printStackTrace();
         }
     }
 
